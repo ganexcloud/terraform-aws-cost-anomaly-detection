@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.1](https://github.com/ganexcloud/terraform-aws-cost-anomaly-detection/compare/v1.0.0...v1.0.1) (2024-04-03)
+
+
+### Bug Fixes
+
+* add support to dimension subscription ([9d74f23](https://github.com/ganexcloud/terraform-aws-cost-anomaly-detection/commit/9d74f2342d7e1b1513a909d33e2d09eaf26abd9e))
+
 ## 1.0.0 (2024-04-02)
 
 
