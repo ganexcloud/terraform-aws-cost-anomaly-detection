@@ -10,9 +10,18 @@ resource "aws_ce_anomaly_subscription" "this" {
   name             = each.value.name
   monitor_arn_list = [aws_ce_anomaly_monitor.this.arn]
   frequency        = each.value.frequency
+
   dynamic "threshold_expression" {
     for_each = [each.value.threshold_expressions != null ? [1] : []]
     content {
+      dynamic "dimension" {
+        for_each = [for x in each.value.threshold_expressions : x if lookup(x, "dimension", null) != null]
+        content {
+          key           = dimension.value.dimension.key
+          match_options = dimension.value.dimension.match_options
+          values        = dimension.value.dimension.values
+        }
+      }
       dynamic "and" {
         for_each = [for x in each.value.threshold_expressions : x if lookup(x, "and", null) != null]
         content {
